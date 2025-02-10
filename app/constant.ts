@@ -110,7 +110,6 @@ export const UNFINISHED_INPUT = (id: string) => "unfinished-input-" + id;
 export const STORAGE_KEY = "chatgpt-next-web";
 
 export const REQUEST_TIMEOUT_MS = 60000;
-export const REQUEST_TIMEOUT_MS_FOR_THINKING = REQUEST_TIMEOUT_MS * 5;
 
 export const EXPORT_MESSAGE_CLASS_NAME = "export-markdown";
 
@@ -488,11 +487,43 @@ const openaiModels = [
   "gpt-4-vision-preview",
   "gpt-4-turbo-2024-04-09",
   "gpt-4-1106-preview",
+  "dall-e-2",
+  "code-davinci-edit-001",
+  "davinci-002",
   "dall-e-3",
   "o1-mini",
   "o1-preview",
   "o3-mini",
 ];
+
+const anthropicZFModels = [
+  "claude-3-5-sonnet-20240620",
+  "claude-3-5-sonnet-20241022",
+  "claude-3-haiku-20240307",
+  "claude-3-opus-20240229",
+  "claude-3-sonnet-20240229",
+];
+
+const deepseekZFModels = [
+  "deepseek-v3",
+  "deepseek-chat",
+  "deepseek-r1",
+  "deepseek-reasoner",
+]
+
+const googleZFModels = [
+  "gemini-1.5-flash",
+  "gemini-1.5-flash-002",
+  "gemini-1.5-pro",
+  "gemini-2.0-flash-thinking-exp",
+  "gemini-2.0-pro-exp-02-05",
+  "gemini-exp-1206",
+];
+
+const moonshotZFModes = [
+  "moonshot-v1-128k",
+  "moonshot-v1-128k-vision-preview",
+]
 
 const googleModels = [
   "gemini-1.0-pro", // Deprecated on 2/15/2025
@@ -547,6 +578,8 @@ const baiduModels = [
   "ernie-speed-8k",
   "ernie-lite-8k",
   "ernie-tiny-8k",
+  "deepseek-r1",
+  "deepseek-v3",
 ];
 
 const bytedanceModels = [
@@ -566,6 +599,8 @@ const alibabaModes = [
   "qwen-max-0403",
   "qwen-max-0107",
   "qwen-max-longcontext",
+  "deepseek-r1",
+  "deepseek-v3",
 ];
 
 const tencentModels = [
@@ -590,16 +625,7 @@ const iflytekModels = [
 
 const deepseekModels = ["deepseek-chat", "deepseek-coder", "deepseek-reasoner"];
 
-const xAIModes = [
-  "grok-beta",
-  "grok-2",
-  "grok-2-1212",
-  "grok-2-latest",
-  "grok-vision-beta",
-  "grok-2-vision-1212",
-  "grok-2-vision",
-  "grok-2-vision-latest",
-];
+const xAIModes = ["grok-beta"];
 
 const chatglmModels = [
   "glm-4-plus",
@@ -792,6 +818,50 @@ export const DEFAULT_MODELS = [
       providerName: "SiliconFlow",
       providerType: "siliconflow",
       sorted: 14,
+    },
+  })),
+  ...anthropicZFModels.map((name) => ({
+    name,
+    available: true,
+    sorted: seq++,
+    provider: {
+      id: "openai",
+      providerName: "Anthropic转发",
+      providerType: "openai",
+      sorted: 15,
+    },
+  })),
+  ...googleZFModels.map((name) => ({
+    name,
+    available: true,
+    sorted: seq++,
+    provider: {
+      id: "openai",
+      providerName: "Google转发",
+      providerType: "openai",
+      sorted: 16,
+    },
+  })),
+  ...moonshotZFModes.map((name) => ({
+    name,
+    available: true,
+    sorted: seq++,
+    provider: {
+      id: "openai",
+      providerName: "Moonshot转发",
+      providerType: "openai",
+      sorted: 17,
+    },
+  })),
+  ...deepseekZFModels.map((name) => ({
+    name,
+    available: true,
+    sorted: seq++,
+    provider: {
+      id: "openai",
+      providerName: "DeepSeek转发",
+      providerType: "openai",
+      sorted: 18,
     },
   })),
 ] as const;
