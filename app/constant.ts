@@ -110,6 +110,7 @@ export const UNFINISHED_INPUT = (id: string) => "unfinished-input-" + id;
 export const STORAGE_KEY = "chatgpt-next-web";
 
 export const REQUEST_TIMEOUT_MS = 60000;
+export const REQUEST_TIMEOUT_MS_FOR_THINKING = REQUEST_TIMEOUT_MS * 5;
 
 export const EXPORT_MESSAGE_CLASS_NAME = "export-markdown";
 
@@ -509,7 +510,7 @@ const deepseekZFModels = [
   "deepseek-chat",
   "deepseek-r1",
   "deepseek-reasoner",
-]
+];
 
 const googleZFModels = [
   "gemini-1.5-flash",
@@ -520,10 +521,7 @@ const googleZFModels = [
   "gemini-exp-1206",
 ];
 
-const moonshotZFModes = [
-  "moonshot-v1-128k",
-  "moonshot-v1-128k-vision-preview",
-]
+const moonshotZFModes = ["moonshot-v1-128k", "moonshot-v1-128k-vision-preview"];
 
 const googleModels = [
   "gemini-1.0-pro", // Deprecated on 2/15/2025
@@ -625,7 +623,16 @@ const iflytekModels = [
 
 const deepseekModels = ["deepseek-chat", "deepseek-coder", "deepseek-reasoner"];
 
-const xAIModes = ["grok-beta"];
+const xAIModes = [
+  "grok-beta",
+  "grok-2",
+  "grok-2-1212",
+  "grok-2-latest",
+  "grok-vision-beta",
+  "grok-2-vision-1212",
+  "grok-2-vision",
+  "grok-2-vision-latest",
+];
 
 const chatglmModels = [
   "glm-4-plus",
