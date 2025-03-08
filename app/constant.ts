@@ -505,10 +505,11 @@ const anthropicZFModels = [
   "claude-3-haiku-20240307",
   "claude-3-opus-20240229",
   "claude-3-sonnet-20240229",
+  "claude-3-7-sonnet-20250219",
+  "claude-3-7-sonnet-20250219-thinking",
 ];
 
 const deepseekZFModels = [
-  "deepseek-v3",
   "deepseek-chat",
   "deepseek-r1",
   "deepseek-reasoner",
@@ -524,6 +525,8 @@ const googleZFModels = [
 ];
 
 const moonshotZFModes = ["moonshot-v1-128k", "moonshot-v1-128k-vision-preview"];
+
+const qwenZFModes = ["qwq-32b", "qwen-plus"];
 
 const googleModels = [
   "gemini-1.0-pro", // Deprecated on 2/15/2025
@@ -871,6 +874,17 @@ export const DEFAULT_MODELS = [
       providerName: "DeepSeek转发",
       providerType: "openai",
       sorted: 18,
+    },
+  })),
+  ...qwenZFModes.map((name) => ({
+    name,
+    available: true,
+    sorted: seq++,
+    provider: {
+      id: "openai",
+      providerName: "Qwen转发",
+      providerType: "openai",
+      sorted: 19,
     },
   })),
 ] as const;
